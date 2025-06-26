@@ -1,0 +1,1 @@
+SELECT Name, CalculateAge(DOB) AS Age FROM Customers;

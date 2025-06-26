@@ -1,0 +1,1 @@
+EXEC AddNewCustomer(7, 'iam son', TO_DATE('1988-12-01', 'YYYY-MM-DD'), 3500,SYSDATE);

@@ -1,0 +1,2 @@
+--EXEC SafeTransferFunds(1, 2, 1000);
+SELECT * FROM ACCOUNTS;
