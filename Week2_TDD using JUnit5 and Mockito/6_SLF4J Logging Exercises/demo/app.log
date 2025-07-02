@@ -1,6 +1,0 @@
-03:21:06.434 [com.example.AppenderLoggingExample.main()] INFO  com.example.AppenderLoggingExample - This message goes to both console and file!
-03:21:06.435 [com.example.AppenderLoggingExample.main()] ERROR com.example.AppenderLoggingExample - This error is logged in both places too!
-03:21:55.979 [com.example.LoggingExample.main()] ERROR com.example.LoggingExample - This is an error message
-03:21:55.980 [com.example.LoggingExample.main()] WARN  com.example.LoggingExample - This is a warning message
-03:22:27.768 [com.example.ParameterizedLoggingExample.main()] INFO  c.e.ParameterizedLoggingExample - User Alice is 30 years old
-03:22:27.770 [com.example.ParameterizedLoggingExample.main()] WARN  c.e.ParameterizedLoggingExample - User Alice has reached age threshold: 30
