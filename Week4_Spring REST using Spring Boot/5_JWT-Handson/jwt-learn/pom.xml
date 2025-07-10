@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.5.3</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.cognizant</groupId>
+	<artifactId>jwt-learn</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>jwt-learn</name>
+	<description>Securing RESTful Web Services with Spring Security  Follow steps below to secure all web services using Spring Security: •	Open spring-learn project in Eclipse •	Include spring security related libraries by adding the below dependency in pom.xml &lt;dependency&gt;     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;     &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt; &lt;/dependency&gt; •	Rebuild the project in command line using mvn clean package command (ensure to include proxy details in mvn command). •	To ensure the new libraries are enabled in Eclipse, right click the project and select Maven &gt; Update Project •	Create a new package &apos;com.cognizant.spring-learn.security&apos; •	Create a new class SecurityConfig in the new package created above which extends from WebSecurityConfigurerAdapter •	Include annotations @Configuration and @EnableWebSecurity at class level •	Import appropriate classes using Ctrl + Shift + O •	Start the application and check the logs and test the REST service. Refer command below:  curl -s http://localhost:8090/countries •	The following error message is the expected response:  {&quot;timestamp&quot;:&quot;2019-10-05T09:24:33.794+0000&quot;,&quot;status&quot;:401,&quot;error&quot;:&quot;Unauthorized&quot;,&quot;message&quot;:&quot;Unauthorized&quot;,&quot;path&quot;:&quot;/countries&quot;} •	The inclusion of @EnableWebSecurity has restricted access to all the web services with a common password. •	Refer the logs to find out the password generated. Now execute the invocation of the service with password as specified below, which should get the list of countries. include the password from the log file after user:. curl -s -v -u user:d27321a9-0751-4f59-8fc6-f8633847a9b8 http://localhost:8090/countries •	Find below a sample response for the above command: [{&quot;code&quot;:&quot;US&quot;,&quot;name&quot;:&quot;United States&quot;},{&quot;code&quot;:&quot;DE&quot;,&quot;name&quot;:&quot;Germany&quot;},{&quot;code&quot;:&quot;IN&quot;,&quot;name&quot;:&quot;India&quot;},{&quot;code&quot;:&quot;JP&quot;,&quot;name&quot;:&quot;Japan&quot;}]* timeout on name lookup is not supported *   Trying ::1... * TCP_NODELAY set * Connected to localhost (::1) port 8090 (#0) * Server auth using Basic with user &apos;user&apos; &gt; GET /countries HTTP/1.1 &gt; Host: localhost:8090 &gt; Authorization: Basic dXNlcjpkMjczMjFhOS0wNzUxLTRmNTktOGZjNi1mODYzMzg0N2E5Yjg= &gt; User-Agent: curl/7.55.0 &gt; Accept: */* &gt; &lt; HTTP/1.1 200 &lt; Set-Cookie: JSESSIONID=C0C907417A21BBCA9F30BEEA4B512AEE; Path=/; HttpOnly &lt; X-Content-Type-Options: nosniff &lt; X-XSS-Protection: 1; mode=block &lt; Cache-Control: no-cache, no-store, max-age=0, must-revalidate &lt; Pragma: no-cache &lt; Expires: 0 &lt; X-Frame-Options: DENY &lt; Content-Type: application/json;charset=UTF-8 &lt; Transfer-Encoding: chunked &lt; Date: Sat, 05 Oct 2019 09:36:34 GMT &lt; { [133 bytes data] * Connection #0 to host localhost left intact •	First line contains the country list responded successfully. •	The above result contains the request header and response header. •	The request lines starts with &gt; and reponse lines starts with &lt; •	Notice the Authorization header in the HTTP Request •	This denotes that it uses basic HTTP Authorisation. Whatever following Basic is Base64 encoding of the password that was supplied in the command line.   </description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+
+		<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-api</artifactId>
+    <version>0.11.5</version>
+</dependency>
+<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-impl</artifactId>
+    <version>0.11.5</version>
+    <scope>runtime</scope>
+</dependency>
+<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-jackson</artifactId>
+    <version>0.11.5</version>
+    <scope>runtime</scope>
+</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
